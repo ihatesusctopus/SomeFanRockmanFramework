@@ -1,0 +1,9 @@
+CollisionShape2D
+Area2D
+Timer
+Node
+AnimationPlayer
+VisibleOnScreenNotifier2D
+AnimatedSprite2D
+CharacterBody2D
+Node2D

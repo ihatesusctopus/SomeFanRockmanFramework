@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "TZYK+AOgU88=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bruhy\\Documents\\projects and frameworks\\Rockman ZX 2.5d\\Rockman 8 Unimeko Aprilfools.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bruhy\\.nuget\\packages\\godot.sourcegenerators\\4.5.1\\godot.sourcegenerators.4.5.1.nupkg.sha512",
+    "C:\\Users\\bruhy\\.nuget\\packages\\godotsharp\\4.5.1\\godotsharp.4.5.1.nupkg.sha512",
+    "C:\\Users\\bruhy\\.nuget\\packages\\godotsharpeditor\\4.5.1\\godotsharpeditor.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

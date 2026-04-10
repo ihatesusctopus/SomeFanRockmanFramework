@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://tv7kk51i31k1"]
+
+[node name="AnimatedObject" type="Node2D"]
