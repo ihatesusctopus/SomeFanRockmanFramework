@@ -8,7 +8,7 @@ using System.Reflection.Metadata.Ecma335;
 public partial class EntityBase : CharacterBody2D
 {
     [Export] int Hp_max = 100;
-    public int Hp { get{ return Hp; } set{ value = Hp_max; } }
+    private int Hp { get{ return Hp; } set{ value = Hp_max; } }
     [Export] bool UsingDmgTable = false;
     [Export] bool Dieon0hp = false;
     [Export] bool Gravityenabled = true;  
@@ -24,6 +24,7 @@ public partial class EntityBase : CharacterBody2D
 
     public override void _Ready()
     {
+        var Ent_Hp = Hp; 
         var Ent_sprite = GetNode<AnimatedSprite2D>("Sprite");
         var Visanotifier = GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D");
         var Collshape = GetNode<CollisionShape2D>("CollisionShape2D");
@@ -50,7 +51,7 @@ public partial class EntityBase : CharacterBody2D
 
     public override void _Process(double delta) 
     {
-        Godot.Vector2 Snap_vector = Godot.Vector2(0,15) ? Snap: Godot.Vector2.Zero;
+        var Snap_vector = Godot.Vector2(0,15) ? Snap: Godot.Vector2.Zero;
         velocity = MoveAndSlide()
     }
 }
