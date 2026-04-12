@@ -14,14 +14,16 @@ public partial class EntityBase : CharacterBody2D
     [Export] bool Gravityenabled = true;  
     [Export] bool Infinite_inertia = true;
     [Export] float Invulnerable_Time = 0f;
+    bool visible = false;
+
+    Godot.Vector2 Velocity = Godot.Vector2.Zero; 
+    int DmgTable;
+    int DmgResistence = 1;
+    int LatestComboVal = -1;
+    bool Snap = true;
 
     public override void _Ready()
     {
-        int Ent_Hp = Hp;
-        bool visible = false;
-
-        Vector2 Velocity = Vector2.Zero;
-
         var Ent_sprite = GetNode<AnimatedSprite2D>("Sprite");
         var Visanotifier = GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D");
         var Collshape = GetNode<CollisionShape2D>("CollisionShape2D");
@@ -29,12 +31,7 @@ public partial class EntityBase : CharacterBody2D
         var Hurtbox = GetNode<CollisionShape2D>("CollisionShape2D");
         var Hurtcoll = GetNode<CollisionShape2D>("Hurtbox/CollisionShape2D");
         var I_frame_timer = GetNode<Timer>("I_frame_time");
-
-        int DmgTable;
-        int DmgResistence = 1;
-        int LatestComboVal = -1;
-        bool Snap = true;
-
+        
         I_frame_timer.WaitTime = Invulnerable_Time;
     }
 
@@ -51,10 +48,10 @@ public partial class EntityBase : CharacterBody2D
         return Hp;
     }
 
-    public override void Move()
+    public override void _Process(double delta) 
     {
-        Vector2 Snap_vector = (new(0,15)) ? _Ready.Snap: Vector2.Zero;
-        velocity = 
+        Godot.Vector2 Snap_vector = Godot.Vector2(0,15) ? Snap: Godot.Vector2.Zero;
+        velocity = MoveAndSlide()
     }
 }
 
