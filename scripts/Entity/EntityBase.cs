@@ -14,9 +14,9 @@ public partial class EntityBase : CharacterBody2D
     [Export] bool Gravityenabled = true;  
     [Export] bool Infinite_inertia = true;
     [Export] float Invulnerable_Time = 0f;
-    bool visible = false;
-
+    
     Godot.Vector2 Velocity = Godot.Vector2.Zero; 
+    bool Visible = false;
     int DmgTable;
     int DmgResistence = 1;
     int LatestComboVal = -1;
@@ -51,8 +51,23 @@ public partial class EntityBase : CharacterBody2D
 
     public override void _Process(double delta) 
     {
-        var Snap_vector = Godot.Vector2(0,15) ? Snap: Godot.Vector2.Zero;
-        velocity = MoveAndSlide()
+        var SnapVector = Convert.ToBoolean(new Godot.Vector2(0,15)) ? Snap : Convert.ToBoolean(Godot.Vector2.Zero);
+        var velocity = Convert.ToBoolean(Velocity);
+        velocity = MoveAndSlide();   
+    }
+
+    public void SnapToGround(float RayLenght)
+    {
+        var SpaceState = GetWorld2D().DirectSpaceState;
+        //the first globalPosition is a 0,0 the other 2 are 0s in their own Axis 
+        var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, new Godot.Vector2(GlobalPosition.X, GlobalPosition.Y + RayLenght));
+        var ResultPos = SpaceState.IntersectRay(query);
+
+        if (Convert.ToBoolean(ResultPos))
+        {
+            //GlobalPosition.Y = ResultPos.Position.Y
+        }
+
     }
 }
 
