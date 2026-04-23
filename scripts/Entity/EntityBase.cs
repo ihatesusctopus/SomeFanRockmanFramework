@@ -8,7 +8,7 @@ using System.Reflection.Metadata.Ecma335;
 public partial class EntityBase : CharacterBody2D
 {
     [Export] int Hp_max = 100;
-    private int Hp { get{ return Hp; } set{ value = Hp_max; } }
+    private int Hp { get => Hp_max; set {if (value != Hp_max){ Hp_max = Math.Clamp(value,0,Hp_max);}} }
     [Export] bool UsingDmgTable = false;
     [Export] bool Dieon0hp = false;
     [Export] bool Gravityenabled = true;  
@@ -36,38 +36,25 @@ public partial class EntityBase : CharacterBody2D
         I_frame_timer.WaitTime = Invulnerable_Time;
     }
 
-    public void Set_Hp(int value)
-    {
-        if (value != Hp)
-        {
-            Hp = (int)Math.Clamp(value,0,Hp_max);
-        }
-    }
-
-    public int Get_Hp()
-    {
-        return Hp;
-    }
-
     public override void _Process(double delta) 
     {
         var SnapVector = Convert.ToBoolean(new Godot.Vector2(0,15)) ? Snap : Convert.ToBoolean(Godot.Vector2.Zero);
         var velocity = Convert.ToBoolean(Velocity);
-        velocity = MoveAndSlide();   
+        velocity = MoveAndSlide();
     }
 
     public void SnapToGround(float RayLenght)
     {
         var SpaceState = GetWorld2D().DirectSpaceState;
         //the first globalPosition is a 0,0 the other 2 are 0s in their own Axis 
-        var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, new Godot.Vector2(GlobalPosition.X, GlobalPosition.Y + RayLenght));
+        //var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, new Godot.Vector2(GlobalPosition.X, GlobalPosition.Y + RayLenght), this, CollisionMask);
         var ResultPos = SpaceState.IntersectRay(query);
 
         if (Convert.ToBoolean(ResultPos))
         {
-            //GlobalPosition.Y = ResultPos.Position.Y
+            // GlobalPosition.Y = ResultPos.Position.Y
+            // return ResultPos;
         }
-
     }
 }
 

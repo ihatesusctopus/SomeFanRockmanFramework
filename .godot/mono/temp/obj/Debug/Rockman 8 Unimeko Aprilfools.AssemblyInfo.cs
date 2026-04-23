@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rockman 8 Unimeko Aprilfools")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e760ed160d49ef29ba65ac618662d929565b1783")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2687511ef9325ce63e71b0ba1fd2eb138d14556")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rockman 8 Unimeko Aprilfools")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rockman 8 Unimeko Aprilfools")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
